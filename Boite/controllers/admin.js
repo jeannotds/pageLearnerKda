@@ -30,8 +30,8 @@ export const addAdminOrFind = async (request, response) => {
 export const getAllAdmins = async (request, response) => {
   await admin
     .find()
-    .then(learner => {
-      response.status(200).json({ message: 'get succefully user', learner })
+    .then(admin => {
+      response.status(200).json({ message: 'get succefully user', admin })
     })
     .catch(err => {
       throw err
