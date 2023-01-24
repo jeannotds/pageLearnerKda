@@ -26,3 +26,14 @@ export const addAdminOrFind = async (request, response) => {
     })
     .catch()
 }
+
+export const getAlllearners = async (request, response) => {
+  await admin
+    .find()
+    .then(learner => {
+      response.status(200).json({ message: 'get succefully user', learner })
+    })
+    .catch(err => {
+      throw err
+    })
+}
