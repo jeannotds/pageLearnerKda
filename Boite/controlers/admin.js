@@ -27,7 +27,7 @@ export const addAdminOrFind = async (request, response) => {
     .catch()
 }
 
-export const getAlllearners = async (request, response) => {
+export const getAllAdmins = async (request, response) => {
   await admin
     .find()
     .then(learner => {

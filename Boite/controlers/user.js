@@ -31,3 +31,15 @@ export const addUserOrFind = async (request, response) => {
       throw err
     })
 }
+
+export const getAllUsers = async (request, response) => {
+  await user
+    .find()
+    .then(user => {
+      response.status(200).json({ message: 'get succefully user', user })
+    })
+    .catch(err => {
+      throw err
+    })
+}
+
