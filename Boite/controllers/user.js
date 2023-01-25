@@ -1,5 +1,5 @@
 import bcrypt from 'bcrypt'
-import user from '../models/user'
+import user from '../models/userModel'
 
 export const addUserOrFind = async (request, response) => {
   const { name, lastname, email } = request.body
