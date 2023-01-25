@@ -1,9 +1,9 @@
 import bcrypt from 'bcrypt'
-import user from '../models/userModel'
+import userModel from '../models/userModel'
 
 export const addUserOrFind = async (request, response) => {
   const { name, lastname, email } = request.body
-  await user
+  await userModel
     .findOne({ email: request.body.email })
     .then(user => {
       if (user) {
@@ -11,7 +11,7 @@ export const addUserOrFind = async (request, response) => {
       } else {
         const hash = bcrypt.hashSync(request.body.password, 10)
         try {
-          const newUser = user.create({
+          const newUser = userModel.create({
             name,
             email,
             lastname,
@@ -33,7 +33,7 @@ export const addUserOrFind = async (request, response) => {
 }
 
 export const getAllUsers = async (request, response) => {
-  await user
+  await userModel
     .find()
     .then(user => {
       response.status(200).json({ message: 'get succefully user', user })

@@ -1,4 +1,3 @@
-// import admin from '../models/admin'
 import bcrypt from 'bcrypt'
 import adminModel from '../models/adminModel'
 
