@@ -1,8 +1,9 @@
-import admin from '../models/admin'
+// import admin from '../models/admin'
 import bcrypt from 'bcrypt'
+import adminModel from '../models/adminModel'
 
 export const addAdminOrFind = async (request, response) => {
-  await admin
+  await adminModel
     .findOne({ email: request.body.email })
     .then(user => {
       if (user) {
@@ -10,7 +11,7 @@ export const addAdminOrFind = async (request, response) => {
       } else {
         const hash = bcrypt.hashSync(request.body.password, 10)
         try {
-          const newAdmin = admin.create({
+          const newAdmin = adminModel.create({
             email: request.body.email,
             password: hash,
           })
@@ -28,7 +29,7 @@ export const addAdminOrFind = async (request, response) => {
 }
 
 export const getAllAdmins = async (request, response) => {
-  await admin
+  await adminModel
     .find()
     .then(admin => {
       response.status(200).json({ message: 'get succefully user', admin })
